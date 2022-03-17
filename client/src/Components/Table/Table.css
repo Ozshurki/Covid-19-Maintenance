@@ -1,0 +1,64 @@
+.flex-table {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 20px;
+    border: 1px solid black;
+}
+.flex-table thead {
+    color: #fff;
+    background: #a749ff;
+}
+
+.flex-table thead tr{
+    padding-right: 10px;
+}
+
+.flex-table thead tr,
+.flex-table tbody tr {
+    display: flex;
+    width: 100%;
+}
+.flex-table tbody tr+tr {
+    border-top: 1px solid #ccc;
+}
+.flex-table thead tr th,
+.flex-table tbody tr td {
+    display: flex;
+    flex: 1;
+    padding: .4em;
+    justify-content: start;
+}
+
+.flex-table tbody a{
+    text-decoration: none;
+    color:black;
+}
+
+.row-container{
+    display: flex;
+    width: auto;
+    border-bottom: 1px solid black;
+}
+
+.row-link{
+    width: 100%;
+}
+
+.table-row:hover{
+    background-color:#6770d214;
+}
+
+.table-row:nth-of-type(2n){
+    background: red;
+}
+
+.table-row td{
+    border-left: 1px solid black;
+}
+
+.delete-record{
+    margin-top: 5px;
+}

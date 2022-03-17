@@ -1,0 +1,170 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.form-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    min-height: 600px;
+    margin: 0 10px;
+    box-shadow: -1px -1px 20px 0;
+    background-color: white;
+    border-radius: 10px;
+}
+.form-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 80%;
+    border-bottom: 1px solid black;
+    flex:1 1;
+}
+
+.submit-btn, .table-link{
+    position: relative;
+    height: 30px;
+    width: 100px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+    font-family: 'Hubballi', cursive;
+    margin: 10px 10px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.submit-btn:hover, .table-link:hover{
+    transform: scale(1.2);
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.col{
+    width: 300px;
+    height: 600px;
+    margin-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.col-1, .col-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid black;
+}
+
+.city-wrapper{
+    background-color: #f7f7f7;
+    position: relative;
+}
+
+.col-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.select-item div{
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #E1E1E0;
+}
+
+.calendar-wrapper{
+    width: 95%;
+}
+
+
+.form-checkbox:nth-of-type(1){
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.form-checkbox:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+label{
+    font-weight: 600;
+}
+
+.form-checkbox .container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    height: auto;
+    width: 120px;
+}
+
+.infected-checkbox label, .condition-checkbox label{
+    margin-right: 5px;
+}
+
+.form-checkbox .conditions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.container label, .conditions label{
+    font-weight: 100;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #a3e3fc63;
+}
+
+
+@media (max-width: 939px){
+
+    .form-container{
+        top: 100px
+    }
+    .col-1, .col-2{
+        border:none;
+    }
+}
+
+@media (max-width: 624px){
+    .form-content{
+        justify-content: center;
+    }
+
+    .col{
+        border: none;
+        align-items: center;
+    }
+}
+
