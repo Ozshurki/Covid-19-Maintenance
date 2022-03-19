@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -20,8 +23,8 @@ input::-webkit-inner-spin-button {
     align-items: center;
     max-width: 1200px;
     min-height: 600px;
+    box-shadow: 0 0 4px;
     margin: 0 10px;
-    box-shadow: -1px -1px 20px 0;
     background-color: white;
     border-radius: 10px;
 }
@@ -34,13 +37,16 @@ input::-webkit-inner-spin-button {
     flex:1 1;
 }
 
+.submit-btn{
+    padding-top: 3px;
+}
+
 .submit-btn, .table-link{
     position: relative;
     height: 30px;
-    width: 100px;
+    max-width: 100px;
     font-size: 1.1rem;
     cursor: pointer;
-    border: 1px solid black;
     color: black;
     font-family: 'Hubballi', cursive;
     margin: 10px 10px;
@@ -53,6 +59,11 @@ input::-webkit-inner-spin-button {
     transform: scale(1.2);
     background-color: white;
     color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-btn:hover{
+    border: 1px solid black;
     transition: all 0.3s ease-in-out;
 }
 
@@ -72,7 +83,6 @@ input::-webkit-inner-spin-button {
 }
 
 .city-wrapper{
-    background-color: #f7f7f7;
     position: relative;
 }
 
@@ -82,17 +92,14 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
 }
 
+.zipcode-wrapper{
+    margin-top: 80px;
+}
+
 .item{
     display: flex;
     flex-direction: column;
     width: 150px;
-}
-
-.select-item div{
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    background-color: #E1E1E0;
 }
 
 .calendar-wrapper{
@@ -113,6 +120,8 @@ input::-webkit-inner-spin-button {
 }
 
 label{
+    font-family: 'Hubballi', cursive;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
@@ -139,13 +148,22 @@ label{
     font-weight: 100;
 }
 
-.btn-container{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: #a3e3fc63;
+.success-msg{
+    font-family: 'Hubballi', cursive;
+    font-size: 1.5rem;
+    color: green;
 }
 
+.btn-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 30%;
+}
+
+.submit-btn, .table-link{
+    font-size: 1.3rem;
+}
 
 @media (max-width: 939px){
 

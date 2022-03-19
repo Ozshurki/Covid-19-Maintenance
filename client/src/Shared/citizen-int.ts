@@ -1,12 +1,12 @@
 export interface CitizenInt {
-    firstName: string;
-    lastName: string;
-    birthDate: string;
+    first_name: string;
+    last_name: string;
+    birth_date: string;
     address: string;
     city: string;
     zipcode: string;
-    landline: string;
+    land_line: string;
     cellular: string;
-    isInfected: string;
+    is_infected: string;
     conditions: string[];
 }

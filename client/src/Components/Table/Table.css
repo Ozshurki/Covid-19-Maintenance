@@ -1,12 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
 .flex-table {
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: #f7f7f7;
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: scroll;
     margin: 20px;
     border: 1px solid black;
 }
+
+.backward-link{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 50px;
+}
+
+.filters-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    width: 70%;
+}
+
+.filter-item{
+    width: 40%;
+}
+
+.date-range-inputs{
+    display: flex;
+    justify-content: space-between;
+    min-height: 60%;
+    width: 100%;
+}
+
+.filter-item label{
+    width: 50%;
+    font-family: 'Hubballi', cursive;
+    font-size: 1.4rem;
+}
+
+.filter-item input{
+    width: 45%;
+    font-family: 'Hubballi', cursive;
+    font-size: 0.94rem;
+}
+
+.submit-filters{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 30px;
+    width: 100px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: black;
+    font-family: 'Hubballi', cursive;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.submit-filters:hover{
+    transform: scale(1.2);
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.no-results-msg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Hubballi', cursive;
+    padding-right: 80px;
+}
+
 .flex-table thead {
     color: #fff;
     background: #a749ff;
@@ -30,6 +109,8 @@
     flex: 1;
     padding: .4em;
     justify-content: start;
+    font-family: 'Hubballi', cursive;
+    font-size: 1.2rem;
 }
 
 .flex-table tbody a{
