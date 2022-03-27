@@ -6,13 +6,13 @@
 
 html {
   display: flex;
-  font-size: 16px;
-  font-family: sans-serif;
 }
 
 body {
   width: 100%;
   min-height: 100vh;
+  margin:0;
+  flex: 1 1;
 }
 
 #root{
@@ -20,10 +20,12 @@ body {
 }
 
 .App{
+  height: 100%;
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: white;
   overflow-x: hidden;
+  background: url("https://www.liverpool.ac.uk/media/livacuk/facultyofhealthandlifesciences/covid-hub-banner-1920.jpg");
+  background-size: cover;
 }

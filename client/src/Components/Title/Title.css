@@ -8,8 +8,9 @@
     align-items: center;
     width: 100%;
     min-height: 120px;
-    background-color: #f7f7f7;
     margin: 50px auto;
+    background: rgba(255,255,255,.2);
+    box-shadow: 0 0 12px #333;
 }
 
 .title-content{

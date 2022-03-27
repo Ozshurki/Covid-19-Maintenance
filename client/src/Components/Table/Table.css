@@ -8,7 +8,7 @@
     height: 100%;
     overflow-x: scroll;
     margin: 20px;
-    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .backward-link{
