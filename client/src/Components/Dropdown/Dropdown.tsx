@@ -39,6 +39,7 @@ const Dropdown: React.FC<DropdownInt> = ({dropDownHandler, city}) => {
                 <div className="dropdown-item option courses-option"
                      onClick={() => closeDropDown("Haifa")}>Haifa
                 </div>
+
             </div>}
 
         </div>

@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {motion} from "framer-motion";
-import {RiArrowGoBackFill} from "react-icons/ri"
+import {RiArrowGoBackFill} from "react-icons/ri";
+import classNames from "classnames";
 
 import "./Table.css";
 import Loader from "../Loader/Loader";
@@ -26,6 +27,7 @@ const Table: React.FC = () => {
     const [data, setData] = useState<CitizenInt[]>([]);
     const [city, setCity] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isEdit, setIsEdit] = useState<boolean>(false);
     const fromDateRef = useRef<HTMLInputElement>(null);
     const toDateRef = useRef<HTMLInputElement>(null);
 
@@ -47,6 +49,11 @@ const Table: React.FC = () => {
         }
     };
 
+    const showAllCitiziens = () => {
+        setCity(null);
+        getCitizen("http://localhost:8000/api/citizen");
+    };
+
     const filterHandler = async () => {
 
         const cityParam = `city=${city}`;
@@ -63,29 +70,50 @@ const Table: React.FC = () => {
 
     }, []);
 
+    const deleteRow = async (firstName:string) => {
+        try{
+            await axios.delete(`http://localhost:8000/api/citizens/${firstName}`)
+
+        }catch (err){
+            console.log(err);
+        }
+
+        const url = "http://localhost:8000/api/citizen";
+        getCitizen(url);
+    }
+
     return (
         isLoading ? <Loader/> :
             <table className="flex-table">
-                <Link to="/" className="backward-link">
-                    <RiArrowGoBackFill color="black" size="2rem"/>
-                </Link>
-                <div className="filters-container">
-                    <div className="by-city filter-item">
-                        <Dropdown dropDownHandler={dropDownHandler} city={city}/>
-                    </div>
-                    <div className="by-birth-date filter-item">
-                        <label htmlFor="by-birth-date">Birth date range:</label>
-                        <div className="date-range-inputs">
-                            <input type="text"
-                                   ref={fromDateRef}
-                                   placeholder="From date... (YYYY-MM-DD)"/>
-                            <input type="text"
-                                   ref={toDateRef}
-                                   placeholder="To date... (YYYY-MM-DD)"/>
+                <div className="table-options">
+                    <Link to="/" className="backward-link">
+                        <RiArrowGoBackFill color="black" size="2rem"/>
+                    </Link>
+                    <div className="edit-container">
+                        <div className={classNames("edit-btn", isEdit && "edit-on")}
+                             onClick={() => setIsEdit(!isEdit)}>Edit
                         </div>
-
                     </div>
-                    <div className="submit-filters" onClick={filterHandler}>Search</div>
+                    <div className="filters-container">
+                        <div className="by-city filter-option">
+                            <Dropdown dropDownHandler={dropDownHandler} city={city}/>
+                        </div>
+                        <div className="get-all-citizens filter-option"
+                             onClick={showAllCitiziens}>Show all
+                        </div>
+                        <div className="by-birth-date filter-option">
+                            <label htmlFor="by-birth-date">Birth date range:</label>
+                            <div className="date-range-inputs">
+                                <input type="text"
+                                       ref={fromDateRef}
+                                       placeholder="From date... (YYYY-MM-DD)"/>
+                                <input type="text"
+                                       ref={toDateRef}
+                                       placeholder="To date... (YYYY-MM-DD)"/>
+                            </div>
+                        </div>
+                        <div className="submit-filters filter-option" onClick={filterHandler}>Search</div>
+                    </div>
                 </div>
                 <thead>
                 <tr>
@@ -94,15 +122,15 @@ const Table: React.FC = () => {
                 </thead>
                 <tbody>
                 {data.length === 0 ? <div className="no-results-msg">No results</div> :
-                    data.map((row, i) =>
-                        <div className="row-container" key={i}>
+                    data.map((row, index) =>
+                        <div className="row-container" key={index}>
                             <motion.tr className="table-row"
                                        initial={animateFrom}
                                        animate={animateTo}
-                                       transition={{delay: i * 0.2, type: "spring"}}>
-                                <td className="table-first-name">{row.first_name}</td>
+                                       transition={{delay: index * 0.2, type: "spring"}}>
+                                <td className="table-first-name">{isEdit && <span onClick={() => deleteRow(row.first_name)}>X</span>} {row.first_name}</td>
                                 <td className="table-last-name">{row.last_name}</td>
-                                <td className="table-birthdate">{row.birth_date.slice(0,10)}</td>
+                                <td className="table-birthdate">{row.birth_date.slice(0, 10)}</td>
                                 <td className="table-address">{row.address}</td>
                                 <td className="table-city">{row.city}</td>
                                 <td className="table-zipcode">{row.zipcode}</td>
@@ -117,6 +145,5 @@ const Table: React.FC = () => {
             </table>
     );
 };
-
 
 export default Table;

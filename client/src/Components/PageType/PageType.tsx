@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import React from "react";
-import './Title.css';
+import './PageType.css';
 
 
-interface TitleInt {
+interface PageTypeInt {
     title: string;
     img: string;
 }
 
-const PageType: React.FC<TitleInt> = ({title, img}) => {
+const PageType: React.FC<PageTypeInt> = ({title, img}) => {
 
     const titleVariants ={
         hidden: {
@@ -32,10 +32,7 @@ const PageType: React.FC<TitleInt> = ({title, img}) => {
         animate="visible">
             <div className="title-content">
                 <img src={img} alt="covid"/>
-                <div className="title-text">
-                    {title}
-                </div>
-
+                <div className="title-text">{title}</div>
             </div>
         </motion.div>
     );

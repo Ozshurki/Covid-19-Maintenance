@@ -6,13 +6,15 @@ import "./Form.css";
 import 'react-calendar/dist/Calendar.css';
 import Dropdown from "../Dropdown/Dropdown";
 import {GrTable} from "react-icons/gr";
-import {AiOutlineArrowRight} from "react-icons/ai"
+import {AiOutlineArrowRight} from "react-icons/ai";
 import {Link} from "react-router-dom";
 import moment from "moment";
 
 const api = axios.create({
     baseURL: 'http://localhost:8000/api/register'
 });
+
+const SUCCESS_MSG = "Registered successfully!";
 
 const btnHoverEffect = {
     scale: 1.05,
@@ -28,7 +30,9 @@ const Form: React.FC = () => {
     const [city, setCity] = useState<string | null>(null);
     const [isInfected, setIsInfected] = useState<boolean>(false);
     const [conditions, setConditions] = useState<string[]>([]);
-    const [showSuccessMsg, setShowSuccessMsg] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [isError, setIsError] = useState<boolean>(false);
 
     const firstNameRef = useRef<HTMLInputElement>(null);
     const lastNameRef = useRef<HTMLInputElement>(null);
@@ -46,15 +50,27 @@ const Form: React.FC = () => {
         setConditions(newConditions);
     };
 
+
     const formHandler = async () => {
 
         if (otherConditionsRef.current === null) return;
 
+        if (city === null ||
+            landLineRef.current?.value === "" ||
+            zipcodeRef.current?.value === "" ||
+            cellularRef.current?.value === "") {
+
+            setIsError(true);
+            setErrorMsg("Please fill all the fields!");
+            return;
+        }
+
         const newConditions = [...conditions, otherConditionsRef.current.value];
         setConditions(newConditions);
 
-
         const formatedDate = moment(birthDate).format('YYYY-MM-DD');
+
+        const conditionsString = conditions.map((condition: string) => condition).join(', ');
 
         const data = {
             firstName: firstNameRef.current?.value,
@@ -66,14 +82,17 @@ const Form: React.FC = () => {
             landLine: landLineRef.current?.value,
             cellular: cellularRef.current?.value,
             isInfected: isInfected,
-            conditions: "covid"
+            conditions: conditionsString
         };
 
         try {
             await axios.post('http://localhost:8000/api/register', data);
-            setShowSuccessMsg(true);
+            setConditions([]);
+            setIsError(false);
+            setIsSuccess(true);
         } catch (err) {
-            console.log(err);
+            setIsError(true);
+            setErrorMsg("Something went wrong, please try again");
         }
     };
 
@@ -127,6 +146,7 @@ const Form: React.FC = () => {
                                    ref={zipcodeRef}
                                    className="form-zipcode"
                                    id="form-zipcode"
+                                   autoComplete="off"
                                    placeholder="Zipcode..."/>
                         </div>
                         <div className="land-line-wrapper item">
@@ -136,6 +156,7 @@ const Form: React.FC = () => {
                                    ref={landLineRef}
                                    className="form-land-line"
                                    id="form-land-line"
+                                   autoComplete="off"
                                    placeholder="Land-line..."/>
                         </div>
                         <div className="cellular-wrapper item">
@@ -145,6 +166,7 @@ const Form: React.FC = () => {
                                    ref={cellularRef}
                                    className="form-cellular"
                                    id="form-cellular"
+                                   autoComplete="off"
                                    placeholder="Cellular..."/>
                         </div>
                     </div>
@@ -154,18 +176,21 @@ const Form: React.FC = () => {
                                 Covid-19?</label>
                             <div className="container">
                                 <div className="infected-checkbox">
-                                    <label htmlFor="form-infected-yes">Yes</label>
-                                    <input type="checkbox"
-                                           className="form-infected"
-                                           id="form-infected-yes"
-                                           onClick={() => setIsInfected(true)}/>
-                                </div>
-                                <div className="infected-checkbox">
                                     <label htmlFor="form-infected-no">No</label>
-                                    <input type="checkbox"
+                                    <input type="radio"
                                            className="form-infected"
                                            id="form-infected-no"
+                                           name="covid"
+                                           defaultChecked={true}
                                            onClick={() => setIsInfected(false)}/>
+                                </div>
+                                <div className="infected-checkbox">
+                                    <label htmlFor="form-infected-yes">Yes</label>
+                                    <input type="radio"
+                                           className="form-infected"
+                                           id="form-infected-yes"
+                                           name="covid"
+                                           onClick={() => setIsInfected(true)}/>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +230,8 @@ const Form: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                {showSuccessMsg ? <div className="success-msg">Registered successfully!</div> : ""}
+                {isSuccess && <div className="success-msg">{SUCCESS_MSG}</div>}
+                {isError && <div className="error-msg">{errorMsg}</div>}
                 <div className="btn-container">
                     <div className="submit-btn" onClick={formHandler}>Submit</div>
                     <Link className="table-link" to="/citizens">

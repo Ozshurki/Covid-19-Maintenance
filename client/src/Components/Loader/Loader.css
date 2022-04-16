@@ -9,8 +9,8 @@
 
 .loader-dot {
     display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #a749ff;
+    width: 15px;
+    height: 15px;
+    background-color: black;
     border-radius: 50%;
 }

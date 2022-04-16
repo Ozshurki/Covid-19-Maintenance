@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background: url("https://www.liverpool.ac.uk/media/livacuk/facultyofhealthandlifesciences/covid-hub-banner-1920.jpg");
+  /*background: url("https://www.liverpool.ac.uk/media/livacuk/facultyofhealthandlifesciences/covid-hub-banner-1920.jpg");*/
+  background: url("https://cdn.pixabay.com/photo/2016/03/22/15/29/blue-1273089_1280.jpg");
   background-size: cover;
 }
