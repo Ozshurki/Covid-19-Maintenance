@@ -12,10 +12,15 @@ Server side:
   Be sure you are in djangoProject folder, then run the commands:
 
   pip install django djangorestframework
+  
   python -m pip install django-cors-headers
+  
   python ./manage.py makemigrations
+  
   python ./manage.py migrate
+  
   python ./manage.py runserver
+  
   
   
 After that you can use the app. Have fun!
