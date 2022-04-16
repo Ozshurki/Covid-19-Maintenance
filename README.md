@@ -1,5 +1,7 @@
 # Covid-19-Maintenance
 
+Covid-19 records for workers
+
 Client side written with TypeScript and React
 Server size written with Python and Django framework
 
@@ -11,14 +13,21 @@ Server side:
 
   Be sure you are in djangoProject folder, then run the commands:
 
-  pip install django djangorestframework
-  python -m pip install django-cors-headers
-  python ./manage.py makemigrations
-  python ./manage.py migrate
-  python ./manage.py runserver
+    pip install django djangorestframework
+  
+    python -m pip install django-cors-headers
+  
+    python ./manage.py makemigrations
+  
+    python ./manage.py migrate
+  
+    python ./manage.py runserver
+  
   
   
 After that you can use the app. Have fun!
+
+By the way, you have the option to export the data to excel file using Export button.
 
 
 My details:
