@@ -65,12 +65,6 @@ const Table: React.FC = () => {
         getCitizen(url);
     };
 
-    useEffect(() => {
-        const url = "http://localhost:8000/api/citizen";
-        getCitizen(url);
-
-    }, []);
-
     const deleteRow = async (firstName:string) => {
         try{
             await axios.delete(`http://localhost:8000/api/citizens/${firstName}`)
@@ -90,6 +84,12 @@ const Table: React.FC = () => {
 
         XLSX.writeFile(wb, "Citizens.xlsx");
     }
+
+    useEffect(() => {
+        const url = "http://localhost:8000/api/citizen";
+        getCitizen(url);
+
+    }, []);
 
     return (
         isLoading ? <Loader/> :
