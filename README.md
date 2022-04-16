@@ -27,6 +27,8 @@ Server side:
   
 After that you can use the app. Have fun!
 
+By the way, you have the option to export the data to excel file using Export button.
+
 
 My details:
 
