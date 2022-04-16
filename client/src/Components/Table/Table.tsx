@@ -121,7 +121,7 @@ const Table: React.FC = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {data.length === 0 ? <div className="no-results-msg">No results</div> :
+                {data.length === 0 ? <div className="no-results-msg">No records</div> :
                     data.map((row, index) =>
                         <div className="row-container" key={index}>
                             <motion.tr className="table-row"
