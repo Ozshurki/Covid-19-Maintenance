@@ -1,5 +1,7 @@
 # Covid-19-Maintenance
 
+Covid-19 records for workers
+
 Client side written with TypeScript and React
 Server size written with Python and Django framework
 
