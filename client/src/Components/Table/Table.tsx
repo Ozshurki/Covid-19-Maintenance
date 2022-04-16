@@ -3,6 +3,7 @@ import axios from "axios";
 import {motion} from "framer-motion";
 import {RiArrowGoBackFill} from "react-icons/ri";
 import classNames from "classnames";
+import * as XLSX from 'xlsx'
 
 import "./Table.css";
 import Loader from "../Loader/Loader";
@@ -82,6 +83,14 @@ const Table: React.FC = () => {
         getCitizen(url);
     }
 
+    const exportToExcel = () => {
+        let wb = XLSX.utils.book_new(), ws = XLSX.utils.json_to_sheet(data);
+
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet");
+
+        XLSX.writeFile(wb, "Citizens.xlsx");
+    }
+
     return (
         isLoading ? <Loader/> :
             <table className="flex-table">
@@ -93,6 +102,9 @@ const Table: React.FC = () => {
                         <div className={classNames("edit-btn", isEdit && "edit-on")}
                              onClick={() => setIsEdit(!isEdit)}>Edit
                         </div>
+                    </div>
+                    <div className="export-btn">
+                        <button onClick={exportToExcel}>Export</button>
                     </div>
                     <div className="filters-container">
                         <div className="by-city filter-option">
