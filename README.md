@@ -11,7 +11,7 @@ Client side:
   
 Server side:
 
-  Open server file and then run the commands:
+  Open server folder and then run the commands:
 
     cd djangoProject
  
