@@ -11,16 +11,10 @@ Client side:
   
 Server side:
 
-  Be sure you are in djangoProject folder, then run the commands:
+  Open server file and then run the commands:
 
-    pip install django djangorestframework
-  
-    python -m pip install django-cors-headers
-  
-    python ./manage.py makemigrations
-  
-    python ./manage.py migrate
-  
+    cd djangoProject
+ 
     python ./manage.py runserver
   
   
