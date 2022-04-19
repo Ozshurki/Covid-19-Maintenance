@@ -103,9 +103,11 @@ const Table: React.FC = () => {
                              onClick={() => setIsEdit(!isEdit)}>Edit
                         </div>
                     </div>
+                    {data.length > 0 &&
                     <div className="export-btn">
                         <button onClick={exportToExcel}>Export</button>
                     </div>
+                    }
                     <div className="filters-container">
                         <div className="by-city filter-option">
                             <Dropdown dropDownHandler={dropDownHandler} city={city}/>
